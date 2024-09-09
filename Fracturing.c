@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <math.h>  // for sqrt and pow functions
 
-#define PI 3.14159  // Pi constant for calculations
+#define PI 3.14159  
 
-// Function prototypes
 double ask_for_user_input(const char* prompt);
 double calculate_distance();
 double calculate_perimeter(double distance);
