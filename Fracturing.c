@@ -1,110 +1,84 @@
 #include <stdio.h>
-#include <math.h>
+#include <math.h>  // for sqrt and pow functions
 
-#define PI 3.14159
+#define PI 3.14159  // Pi constant for calculations
 
-double ask_for_user_input();
+// Function prototypes
+double ask_for_user_input(const char* prompt);
 double calculate_distance();
-double calculate_perimeter();
-double calculate_area();
-double calculate_width();
-double calculate_height();
+double calculate_perimeter(double distance);
+double calculate_area(double distance);
+double calculate_width(double distance);
+double calculate_height(double distance);
 
-int main(int argc, char **argv) {
-    // Call the necessary functions to demonstrate their working
-    calculate_distance();
-    calculate_perimeter();
-    calculate_area();
-    calculate_width();
-    calculate_height();
+int main() {
+    // Calculate distance between two points
+    double distance = calculate_distance();
+    
+    // Calculate and display the perimeter, area, width, and height of the circle
+    calculate_perimeter(distance);
+    calculate_area(distance);
+    calculate_width(distance);
+    calculate_height(distance);
 
-    return 0; // Indicating successful execution
+    return 0; 
 }
 
-double ask_for_user_input() {
+// Function to ask for user input with a custom prompt
+double ask_for_user_input(const char* prompt) {
     double value;
+    printf("%s", prompt);
     scanf("%lf", &value);
     return value;
 }
-
 double calculate_distance() {
     double x1, y1, x2, y2, distance;
 
-    printf("Enter x1: ");
-    x1 = ask_for_user_input();
+    x1 = ask_for_user_input("Enter x1: ");
+    y1 = ask_for_user_input("Enter y1: ");
+    x2 = ask_for_user_input("Enter x2: ");
+    y2 = ask_for_user_input("Enter y2: ");
 
-    printf("Enter x2: ");
-    x2 = ask_for_user_input();
- 
-        printf("Enter y1: ");
-    y1 = ask_for_user_input();
-
-    printf("Enter y2: ");
-    y2 = ask_for_user_input();
-
-    printf("Point #1 entered: x1 = %.2f; y1 = %.2f\n", x1, y1);
-    printf("Point #2 entered: x2 = %.2f; y2 = %.2f\n", x2, y2);
-
-    // distance formula
+    // Calculate distance using the distance formula
     distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
 
-    printf("The distance between the two points is %.2f\n", distance);
+    printf("The distance between the two points is: %.2f\n", distance);
 
     return distance;
 }
 
-double calculate_perimeter() {
-    double distance = calculate_distance();
+// Function to calculate the perimeter (circumference) of a circle
+double calculate_perimeter(double distance) {
+    double radius = distance / 2.0;
+    double perimeter = 2 * PI * radius;
 
-    // perimeter of the square formed by distance
-    double perimeter = 4 * distance;
-
-    printf("The perimeter of the city encompassed by your request is %.2f\n", perimeter);
+    printf("The perimeter of the city (circle) is: %.2f\n", perimeter);
 
     return perimeter;
 }
 
-double calculate_area() {
-    double distance = calculate_distance();
+// Function to calculate the area of a circle
+double calculate_area(double distance) {
+    double radius = distance / 2.0;
+    double area = PI * pow(radius, 2);
 
-    // area of the square formed by distance
-    double area = pow(distance, 2);
-
-    printf("The area of the city encompassed by your request is %.2f\n", area);
+    printf("The area of the city (circle) is: %.2f\n", area);
 
     return area;
 }
 
-double calculate_width() {
-    double x1, x2, width;
+// Function to calculate the width (diameter) of a circle
+double calculate_width(double distance) {
+    // Since it's a circle, the width is the same as the diameter
+    printf("The width (diameter) of the city is: %.2f\n", distance);
 
-    printf("Enter x1: ");
-    x1 = ask_for_user_input();
-
-    printf("Enter x2: ");
-    x2 = ask_for_user_input();
-
-    // width is the horizontal distance between x1 and x2
-    width = fabs(x2 - x1);
-
-    printf("The width of the city encompassed by your request is %.2f\n", width);
-
-    return width;
+    return distance;
 }
 
-double calculate_height() {
-    double y1, y2, height;
+// Function to calculate the height (diameter) of a circle
+double calculate_height(double distance) {
+    // Since it's a circle, the height is the same as the diameter
+    printf("The height (diameter) of the city is: %.2f\n", distance);
 
-    printf("Enter y1: ");
-    y1 = ask_for_user_input();
-
-    printf("Enter y2: ");
-    y2 = ask_for_user_input();
-
-    // height is the vertical distance between y1 and y2
-    height = fabs(y2 - y1);
-
-    printf("The height of the city encompassed by your request is %.2f\n", height);
-
-    return height;
+    return distance;
 }
